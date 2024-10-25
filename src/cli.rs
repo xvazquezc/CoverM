@@ -18,6 +18,7 @@ const MAPPING_SOFTWARE_LIST: &[&str] = &[
     "minimap2-ont",
     "minimap2-pb",
     "minimap2-hifi",
+    "minimap2-lrhq",
     "minimap2-no-preset",
     "strobealign",
 ];
@@ -82,12 +83,16 @@ fn add_mapping_options(manual: Manual) -> Manual {
                         &format!("minimap2 with '{}' option", &monospace_roff("-x map-hifi"))
                     ],
                     &[
+                        &monospace_roff("minimap2-lrhq"),
+                        &format!("minimap2 with '{}' option", &monospace_roff("-x lr:hq"))
+                    ],
+                    &[
                         &monospace_roff("minimap2-no-preset"),
                         &format!("minimap2 with no '{}' option", &monospace_roff("-x"))
                     ],
                 ])
             )))
-            .option(Opt::new("PARAMS").long("--minimap2-params").help(&format!(
+            .option(Opt::new("PARAMS").long("--minimap2-parameters").help(&format!(
                 "Extra parameters to provide to minimap2, \
         both indexing command (if used) and for \
         mapping. Note that usage of this parameter \
